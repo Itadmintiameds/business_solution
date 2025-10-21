@@ -18,7 +18,6 @@
 // } satisfies Config;
 
 
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -59,6 +58,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 } satisfies Config;
-
