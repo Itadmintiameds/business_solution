@@ -101,7 +101,7 @@ const ApplyPage = () => {
     return (
         <div className="bg-white">
             <SecondNavBar navItems={navItems} />
-            <div className="relative isolate px-6 pt-14 lg:px-8">
+            <main className="relative isolate px-6 pt-14 lg:px-8">
                 <div
                     aria-hidden="true"
                     className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80 animate-gradient-flow"
@@ -176,19 +176,19 @@ const ApplyPage = () => {
                         </div>
                     </div> */}
 
-                    <p className="mt-12 text-center text-sm text-gray-600">
+                    <p className="mt-12 text-center text-base sm:text-sm text-gray-600">
                         Don’t see a position that fits you?{' '}
-                        <Link href="/" className="font-medium text-primary">
+                        <Link href="/" className="inline-block py-3 font-medium text-primary">
                             Send a message
                         </Link>{' '}
                         to share your interest.
                     </p>
                 </div>
-            </div>
+            </main>
 
             {showModal && selectedJob && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-500 bg-opacity-75">
-                    <div className="bg-white rounded-lg shadow-xl w-11/12 sm:w-10/12 md:w-3/4 p-6 sm:p-8">
+                <div role="dialog" aria-modal="true" aria-label={`Apply for ${selectedJob.title}`} onKeyDown={(e) => e.key === 'Escape' && handleCloseModal()} className="fixed inset-0 flex items-center justify-center z-50 bg-gray-500 bg-opacity-75 p-4">
+                    <div className="relative bg-white rounded-lg shadow-xl w-full sm:w-10/12 md:w-3/4 max-h-[90vh] overflow-y-auto p-6 pt-12 sm:p-8">
                         <div className="flex flex-col sm:flex-row">
                             <div className="w-full sm:w-1/2 sm:pr-4">
                                 <h2 className="text-xl sm:text-2xl font-semibold">{selectedJob.title}</h2>
@@ -216,44 +216,57 @@ const ApplyPage = () => {
                                 </h3>
                                 <form className="space-y-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700">
+                                        <label htmlFor="apply-name" className="block text-sm font-medium text-gray-700">
                                             Full Name
                                         </label>
                                         <input
                                             type="text"
-                                            className="w-full p-3 border rounded-md"
+                                            id="apply-name"
+                                            name="name"
+                                            autoComplete="name"
+                                            className="w-full p-3 min-h-[44px] border rounded-md"
                                             placeholder="Your full name"
                                             required
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700">
+                                        <label htmlFor="apply-email" className="block text-sm font-medium text-gray-700">
                                             Email Address
                                         </label>
                                         <input
                                             type="email"
-                                            className="w-full p-3 border rounded-md"
+                                            id="apply-email"
+                                            name="email"
+                                            autoComplete="email"
+                                            className="w-full p-3 min-h-[44px] border rounded-md"
                                             placeholder="Your email"
                                             required
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700">
+                                        <label htmlFor="apply-phone" className="block text-sm font-medium text-gray-700">
                                             Phone Number
                                         </label>
                                         <input
-                                            type="text"
-                                            className="w-full p-3 border rounded-md"
+                                            type="tel"
+                                            id="apply-phone"
+                                            name="phone"
+                                            autoComplete="tel"
+                                            inputMode="tel"
+                                            className="w-full p-3 min-h-[44px] border rounded-md"
                                             placeholder="Your phone number"
                                             required
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700">
+                                        <label htmlFor="apply-resume" className="block text-sm font-medium text-gray-700">
                                             Upload Resume
                                         </label>
                                         <input
                                             type="file"
+                                            id="apply-resume"
+                                            name="resume"
+                                            accept=".pdf,.doc,.docx"
                                             className="w-full p-3 border rounded-md"
                                             required
                                         />
@@ -271,7 +284,8 @@ const ApplyPage = () => {
                         </div>
                         <button
                             onClick={handleCloseModal}
-                            className="absolute top-4 sm:top-6 right-6 mt-4 md:right-52 md:mt-20 sm:right-6 text-4xl sm:text-4xl font-semibold text-primary"
+                            aria-label="Close"
+                            className="absolute top-2 right-3 h-11 w-11 text-4xl font-semibold text-primary"
                         >
                             &times;
                         </button>

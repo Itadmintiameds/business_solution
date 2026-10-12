@@ -187,20 +187,20 @@ const aboutItems = [
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-gray-100">
+    <section id="about" className="py-fluid-20 px-4 bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-extrabold text-gray-900">
+            <h2 className="text-fluid-4xl font-extrabold text-gray-900">
               About <span className="text-orange-600">Us</span>
             </h2>
             <p className="mt-4 text-lg text-gray-700">
-              Sudhanand Business Solutions offers end-to-end support, from policy implementation and  <br/>claims processing to software quality assurance and data-driven insights.
+              Sudhanand Business Solutions offers end-to-end support, from policy implementation and  <br className="hidden md:block"/>claims processing to software quality assurance and data-driven insights.
             </p>
           </motion.div>
 
@@ -217,13 +217,13 @@ const AboutSection = () => {
               className="relative group"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-lg`}></div>
-              <div className="relative bg-white p-8 rounded-2xl shadow-xl h-full border border-gray-100 group-hover:border-transparent transition-all duration-300">
+              <div className="relative bg-white p-6 sm:p-8 rounded-2xl shadow-xl h-full border border-gray-100 group-hover:border-transparent transition-all duration-300">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className={`flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white text-2xl`}>
                     <item.icon />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-gray-800 mb-3">{item.title}</h4>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3">{item.title}</h3>
                     <p className="text-gray-600 leading-relaxed">{item.text}</p>
                   </div>
                 </div>

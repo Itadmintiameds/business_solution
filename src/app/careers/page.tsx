@@ -21,7 +21,7 @@ const CareerSection = () => {
   return (
     <div className="bg-white">
       <SecondNavBar navItems={navItems} />
-      <div className="relative isolate px-6 pt-14 lg:px-8 overflow-hidden">
+      <main className="relative isolate px-6 pt-14 lg:px-8 overflow-hidden">
         {/* Animated gradient background */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -83,17 +83,17 @@ const CareerSection = () => {
             
             <motion.div 
               variants={fadeInUp}
-              className="mt-10 flex items-center justify-center gap-x-6"
+              className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
             >
               <Link
                 href="/careers/apply"
-                className="rounded-md bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-3 text-sm font-semibold text-white shadow-lg hover:from-orange-700 hover:to-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 transition-all duration-300 hover:shadow-orange-200 hover:scale-105"
+                className="rounded-md bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-3 text-base sm:text-sm font-semibold text-white shadow-lg hover:from-orange-700 hover:to-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 transition-all duration-300 hover:shadow-orange-200 hover:scale-105"
               >
                 View Open Positions
               </Link>
               <Link
                 href="/about"
-                className="flex items-center text-sm font-semibold text-orange-600 hover:text-orange-700 transition-colors duration-300 group"
+                className="flex items-center py-3 text-base sm:text-sm font-semibold text-orange-600 hover:text-orange-700 transition-colors duration-300 group"
               >
                 Learn About Us <FaArrowRight className="ml-1 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
@@ -101,7 +101,7 @@ const CareerSection = () => {
 
             <motion.div 
               variants={fadeInUp}
-              className="mt-16 bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl shadow-sm border border-orange-100"
+              className="mt-16 bg-gradient-to-br from-orange-50 to-white p-5 sm:p-8 rounded-2xl shadow-sm border border-orange-100"
             >
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">Why Work With Us?</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
@@ -129,7 +129,7 @@ const CareerSection = () => {
             </motion.div>
           </motion.div>
         </div>
-      </div>
+      </main>
       <FooterSection />
     </div>
   )

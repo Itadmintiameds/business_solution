@@ -25,7 +25,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-white to-gray-50 py-12 px-6 lg:py-20 lg:px-8" ref={ref}>
+    <div className="bg-gradient-to-b from-white to-gray-50 py-10 px-4 sm:px-6 sm:py-12 lg:py-20 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-12">
         {/* Left Content */}
         <div className="w-full lg:w-1/2 space-y-6">
@@ -84,7 +84,7 @@ const HeroSection = () => {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-1">IT</h3>
-                <p className="text-gray-600 text-sm">Innovative software and AI solutions for businesses.</p>
+                <p className="text-gray-600 text-base md:text-sm">Innovative software and AI solutions for businesses.</p>
               </div>
             </motion.div>
             
@@ -98,7 +98,7 @@ const HeroSection = () => {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-1">ITES</h3>
-                <p className="text-gray-600 text-sm">Transforming business performance through digitization and deep analytics.</p>
+                <p className="text-gray-600 text-base md:text-sm">Transforming business performance through digitization and deep analytics.</p>
               </div>
             </motion.div>
             
@@ -112,7 +112,7 @@ const HeroSection = () => {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-1">US Home Insurance</h3>
-                <p className="text-gray-600 text-sm">Safeguarding homes and valuable assets with comprehensive solutions for policy issuance, claims processing, and fraud prevention.</p>
+                <p className="text-gray-600 text-base md:text-sm">Safeguarding homes and valuable assets with comprehensive solutions for policy issuance, claims processing, and fraud prevention.</p>
               </div>
             </motion.div>
           </motion.div>
@@ -127,8 +127,11 @@ const HeroSection = () => {
         >
           <div className="relative rounded-2xl overflow-hidden shadow-xl transform hover:scale-[1.01] transition-transform duration-500 group">
             <img
-              src="busi.jpg"
-              alt="SBPL Hero"
+              src="/busi.jpg"
+              alt="Sudhanand Business Solutions office reception"
+              width={4208}
+              height={2366}
+              fetchPriority="high"
               className="w-full h-auto object-cover aspect-video lg:aspect-auto"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent group-hover:via-white/10 transition-all duration-500"></div>

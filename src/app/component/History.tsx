@@ -176,6 +176,7 @@ import { motion } from 'framer-motion';
 import { FaChartLine, FaUsers, FaCode, FaDatabase, FaShieldAlt } from 'react-icons/fa';
 import { FaBusinessTime } from 'react-icons/fa';
 import { IoBusinessOutline } from 'react-icons/io5';
+import CountUp from './CountUp';
 
 // Consolidated color scheme for professional look
 const colorScheme = {
@@ -206,6 +207,7 @@ const colorScheme = {
   }
 };
 
+// Chronological. Entries with only a year come before month-dated entries of the same year.
 const timelineData = [
   {
     year: '2020',
@@ -250,9 +252,44 @@ const timelineData = [
     color: colorScheme.orange
   },
   {
-    year: '2024',
+    year: 'Jan 2023',
+    title: 'Data Analytics',
+    description: 'Introduced the Data Analytics function.',
+    icon: <FaChartLine className="text-white w-5 h-5" />,
+    color: colorScheme.orange
+  },
+  {
+    year: 'Apr 2023',
+    title: 'Data Engineering',
+    description: 'Introduced the Data Engineering function.',
+    icon: <FaDatabase className="text-white w-5 h-5" />,
+    color: colorScheme.orange
+  },
+  {
+    year: 'Nov 2024',
+    title: 'Staff Accounting',
+    description: 'Introduced the Staff Accounting function.',
+    icon: <FaBusinessTime className="text-white w-5 h-5" />,
+    color: colorScheme.red
+  },
+  {
+    year: 'Dec 2025',
+    title: 'COBOL Development',
+    description: 'Introduced COBOL development and legacy application management.',
+    icon: <FaCode className="text-white w-5 h-5" />,
+    color: colorScheme.blue
+  },
+  {
+    year: '2026',
     title: 'Advanced Risk & Operations',
     description: 'Launched Book Rolls operations and Risk Analytics through CAT Modeling.',
+    icon: <FaShieldAlt className="text-white w-5 h-5" />,
+    color: colorScheme.red
+  },
+  {
+    year: 'Feb 2026',
+    title: 'Actuarial Sciences',
+    description: 'Introduced the Actuarial Sciences function.',
     icon: <FaShieldAlt className="text-white w-5 h-5" />,
     color: colorScheme.red
   }
@@ -260,19 +297,19 @@ const timelineData = [
 
 const ProfessionalTimeline = () => {
   return (
-    <div className="bg-gray-50 py-20 px-4 font-sans">
+    <section id="journey" className="bg-gray-50 py-fluid-20 px-4 font-sans">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <motion.h2 
+        <div className="text-center mb-12 md:mb-16">
+          <motion.h2
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-4xl font-bold text-gray-900 mb-4"
-          >    
+            className="text-fluid-4xl font-bold text-gray-900 mb-4"
+          >
             Our Journey So Far
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -284,22 +321,26 @@ const ProfessionalTimeline = () => {
         </div>
 
         <div className="relative">
-          {/* Main timeline line */}
+          {/* Main timeline line: centred from md up, a left-hand rail on phones */}
           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 transform -translate-x-1/2 hidden md:block" />
+          <div className="absolute left-2 top-0 bottom-0 w-0.5 bg-gray-300 md:hidden" aria-hidden="true" />
 
-          <div className="space-y-12 md:space-y-0 relative z-10">
+          <ol className="space-y-10 md:space-y-0 relative z-10">
             {timelineData.map((event, index) => (
-              <motion.div
+              <motion.li
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: Math.min(index, 4) * 0.1 }}
                 viewport={{ once: true }}
-                className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                className={`relative flex flex-col md:flex-row items-start md:items-center pl-6 md:pl-0 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
               >
+                {/* Phone rail dot */}
+                <div className={`md:hidden absolute left-2 top-2 -translate-x-1/2 w-3.5 h-3.5 ${event.color.bg} rounded-full border-2 border-white shadow`} aria-hidden="true" />
+
                 {/* Year marker */}
-                <div className="w-full md:w-1/2 px-4 mb-4 md:mb-0">
-                  <div className={`${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'} text-center`}>
+                <div className="w-full md:w-1/2 px-2 md:px-4 mb-3 md:mb-0">
+                  <div className={`${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'} text-left`}>
                     <span className={`inline-block px-3 py-1 text-sm font-medium rounded-full ${event.color.text} bg-white shadow-sm border ${event.color.border}`}>
                       {event.year}
                     </span>
@@ -309,43 +350,43 @@ const ProfessionalTimeline = () => {
                 {/* Timeline dot */}
                 <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-6 h-6 items-center justify-center">
                   <div className={`w-4 h-4 ${event.color.bg} rounded-full z-20 border-2 border-white`} />
-                  <div className={`absolute w-6 h-6 ${event.color.bg} rounded-full opacity-20 animate-ping`} />
+                  <div className={`absolute w-6 h-6 ${event.color.bg} rounded-full opacity-20 animate-ping motion-reduce:animate-none`} />
                 </div>
 
                 {/* Content card */}
-                <div className="w-full md:w-1/2 px-4">
-                  <div className={`p-6 rounded-lg shadow-sm bg-white border-l-4 ${event.color.border} transition-all hover:shadow-md`}>
+                <div className="w-full md:w-1/2 px-2 md:px-4">
+                  <div className={`p-5 sm:p-6 rounded-lg shadow-sm bg-white border-l-4 ${event.color.border} transition-all hover:shadow-md`}>
                     <div className="flex items-start">
                       <div className={`${event.color.bg} p-3 rounded-lg mr-4 flex-shrink-0`}>
                         {event.icon}
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-gray-800 mb-1">{event.title}</h3>
-                        <p className="text-gray-600 text-sm">{event.description}</p>
+                        <p className="text-gray-600 text-base md:text-sm">{event.description}</p>
                       </div>
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.li>
             ))}
-          </div>
+          </ol>
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-12 md:mt-16"
         >
-          <div className="inline-block bg-white px-6 py-3 rounded-full shadow-sm border border-gray-200">
-            <p className="text-gray-600 text-sm font-medium">
-              From 4 members in 2020 to 100+ today, with 200 expected by 2025.
+          <div className="inline-block bg-white px-6 py-3 rounded-3xl sm:rounded-full shadow-sm border border-gray-200">
+            <p className="text-gray-600 text-base md:text-sm font-medium">
+              From 4 members in 2020 to <CountUp value={150} />+ today, with <CountUp value={250} /> expected by 2028.
             </p>
           </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

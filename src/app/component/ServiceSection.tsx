@@ -105,9 +105,11 @@ const services = [
 const videoStories = [
   {
     id: 1,
-     title: "Celebrating Leadership Excellence: Captain Raghu at CII Mysore Chapter",
-    description: "Captain Raghu, COO of Sudhanand Group, was recognized as the Champion Speaker at the CII Mysore Chapter on 17th October 2025, highlighting the power of trust and clarity in leadership.",
-    embedUrl: "https://www.youtube.com/embed/467cCKroQds"
+    // TODO: AI video of SBS. Paste its YouTube embed URL (https://www.youtube.com/embed/<id>) into embedUrl and
+    // finalise the title/description. The slide stays hidden on the site until embedUrl is filled in.
+    title: "Sudhanand Business Solutions | AI Video",
+    description: "An AI-generated video introducing Sudhanand Business Solutions.",
+    embedUrl: ""
   },
   {
     id: 2,
@@ -117,10 +119,13 @@ const videoStories = [
   },
 ];
 
+// Slides without an embed URL yet (the AI video) are not shown.
+const visibleVideos = videoStories.filter((video) => video.embedUrl);
+
 const ServiceSection = () => {
  return (
-   <section id="services" className="py-20 bg-white overflow-hidden">
-     <div className="max-w-7xl mx-auto px-6 text-center">
+   <section id="services" className="py-fluid-20 bg-white overflow-hidden">
+     <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
        
        {/* --- 1. YOUR ORIGINAL SERVICES SECTION --- */}
        <motion.div
@@ -129,7 +134,7 @@ const ServiceSection = () => {
          transition={{ duration: 0.6 }}
          viewport={{ once: true }}
        >
-         <h2 className="text-4xl font-extrabold text-gray-900">
+         <h2 className="text-fluid-4xl font-extrabold text-gray-900">
            Our <span className="text-orange-600">Services</span>
          </h2>
          <p className="mt-4 text-lg text-gray-700">
@@ -188,7 +193,7 @@ const ServiceSection = () => {
            viewport={{ once: true }}
            className="mb-12"
          >
-           <h2 className="text-4xl font-extrabold text-gray-900">
+           <h2 className="text-fluid-4xl font-extrabold text-gray-900">
              Our Stories & <span className="text-orange-600">Highlights</span>
            </h2>
          </motion.div>
@@ -201,10 +206,10 @@ const ServiceSection = () => {
            }}
            spaceBetween={30}
            slidesPerView={1}
-           loop={true}
+           loop={visibleVideos.length > 1}
            className="!pb-12"
          >
-           {videoStories.map((video) => (
+           {visibleVideos.map((video) => (
              <SwiperSlide key={video.id}>
                <div className="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col border-b-4 border-orange-500">
                  <div className="aspect-w-16 aspect-h-9">
@@ -212,17 +217,18 @@ const ServiceSection = () => {
                      src={video.embedUrl}
                      title={video.title}
                      frameBorder="0"
+                     loading="lazy"
                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                      allowFullScreen
                      className="w-full h-full"
                    ></iframe>
                  </div>
-                 
-                 <div className="p-6 text-left flex-grow">
-                   <h3 className="text-xl font-semibold text-orange-800 mb-2">
+
+                 <div className="p-5 sm:p-6 text-left flex-grow">
+                   <h3 className="text-lg sm:text-xl font-semibold text-orange-800 mb-2">
                      {video.title}
                    </h3>
-                   <p className="text-gray-700 text-sm">
+                   <p className="text-gray-700 text-base md:text-sm">
                      {video.description}
                    </p>
                  </div>
@@ -231,11 +237,14 @@ const ServiceSection = () => {
            ))}
          </Swiper>
 
-         <div className="swiper-button-prev-custom absolute top-1/2 left-0 -translate-y-1/2 z-10 p-3 bg-white/70 rounded-full shadow-md cursor-pointer hover:bg-orange-100 transition-all -ml-4 md:ml-0">
-           <FaChevronLeft className="text-orange-600 text-2xl" />
-         </div>
-         <div className="swiper-button-next-custom absolute top-1/2 right-0 -translate-y-1/2 z-10 p-3 bg-white/70 rounded-full shadow-md cursor-pointer hover:bg-orange-100 transition-all -mr-4 md:mr-0">
-           <FaChevronRight className="text-orange-600 text-2xl" />
+         {/* Arrows: centred below the video on phones, overlaid on the sides from md up */}
+         <div className={`flex justify-center gap-6 md:block ${visibleVideos.length > 1 ? "" : "hidden"}`}>
+           <button type="button" aria-label="Previous video" className="swiper-button-prev-custom md:absolute md:top-1/2 md:left-0 md:-translate-y-1/2 z-10 p-3 bg-white/70 rounded-full shadow-md cursor-pointer hover:bg-orange-100 transition-all">
+             <FaChevronLeft className="text-orange-600 text-2xl" />
+           </button>
+           <button type="button" aria-label="Next video" className="swiper-button-next-custom md:absolute md:top-1/2 md:right-0 md:-translate-y-1/2 z-10 p-3 bg-white/70 rounded-full shadow-md cursor-pointer hover:bg-orange-100 transition-all">
+             <FaChevronRight className="text-orange-600 text-2xl" />
+           </button>
          </div>
        </div>
        {/* --- END OF NEW VIDEO SECTION --- */}

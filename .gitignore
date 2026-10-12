@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw photos extracted from "docs/Sudhanand Business Solutions.pdf" (optimised copies live in /public)
+assets/source/

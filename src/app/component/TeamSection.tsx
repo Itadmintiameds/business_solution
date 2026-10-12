@@ -44,7 +44,7 @@
 //     description:
 //       "Ensuring software excellence through rigorous testing, automation, and continuous improvement.",
 //     highlights: [
-//       "Led by Nagashree Nagaraj, 10+ years experience",
+//       "Led by Rajesh Kumbara, Team Lead (TL) with 12+ years of experience",
 //       "20+ experts in manual & automated testing",
 //       "Specialized in Selenium, API testing, and performance analysis",
 //     ],
@@ -204,7 +204,7 @@ const teams = [
     title: "Pre-Claims",
     description: "Efficient, compliant, and client-focused claims support — always.",
     highlights: [
-      "Led by Ms. Chandana, senior claims expert",
+      "Led by Ms. Chandana, Team Lead with 2+ years of leadership experience",
       "15+ professionals handling all kinds of claims tasks.",
       "Expertise in fraud prevention and regulatory adherence",
     ],
@@ -215,7 +215,7 @@ const teams = [
     title: "Software Testing",
     description: "Ensuring software excellence through rigorous testing, automation, and continuous improvement.",
     highlights: [
-      "Led by Nagashree Nagaraj, 5+ years experience",
+      "Led by Rajesh Kumbara, Team Lead (TL) with 12+ years of experience",
       "15+ experts in manual & automated testing",
       "Specialized in Selenium, API testing, and performance analysis",
     ],
@@ -226,7 +226,7 @@ const teams = [
     title: "Data Engineering",
     description: "Transforming raw data into valuable insights with smart integration and automation.",
     highlights: [
-      "Led by Panduranga B P, expert in Python & SQL",
+      "Led by Panduranga B P (Associate Manager) and Divya Anand",
       "Managing ETL, data pipelines, and cloud data storage",
       "Expertise in Power BI, AWS, and insurance data management",
     ],
@@ -237,7 +237,7 @@ const teams = [
     title: "Data Analysis",
     description: "Driving insurance analytics and automation through advanced data tools and insights.",
     highlights: [
-      "Led by Sourav Singh, expert in Python & SQL",
+      "Led by Panduranga B P (Associate Manager) and Divya Anand",
       "Team of 4+ Highly skilled team of data analysts.",
       "Expertise in Pandas, NumPy, SQL, and ASTEC",
       "Specialization in raters, data transformation, and report generation",
@@ -271,9 +271,34 @@ const teams = [
     title: "CAT Modeling",
     description: "Delivering advanced catastrophe risk solutions through simulation-based modeling, strategic risk planning, and proactive disaster readiness.",
     highlights: [
+      // TODO: CAT Modeling new TL name/photo/bio (replace this line once the new lead is confirmed; see data/teaminfo.ts team-009)
       "Led by Bharti Kaushik, CAT modeling specialist with 3+ years of experience",
       "Expert in high-impact peril modeling including hurricanes, floods, and large-scale natural disasters",
       "Skilled in portfolio analysis, reinsurance strategy, and scenario-based stress testing",
+    ],
+  },
+  {
+    id: 'team-010',
+    // TODO: COBOL card illustration. Reuses an existing generic illustration until a dedicated one exists.
+    icon: '/icons/7.png',
+    title: "COBOL & Legacy Systems",
+    description: "Delivering reliable enterprise solutions through COBOL development, AS400/IBM iSeries expertise, and legacy application management.",
+    highlights: [
+      "Led by Madhu, with expertise in COBOL-based legacy application systems",
+      "Specialized in AS400/IBM iSeries platforms and business-critical legacy software",
+      "Experienced in application maintenance, enhancements, troubleshooting, and system support",
+    ],
+  },
+  {
+    id: 'team-011',
+    // TODO: Actuarial Sciences card illustration. Reuses an existing generic illustration until a dedicated one exists.
+    icon: '/icons/6.png',
+    title: "Actuarial Sciences",
+    description: "At Sudhanand Business Solutions, our Actuarial Sciences team focuses on risk assessment, data analysis, and predictive modelling to support informed decision-making in the insurance sector.",
+    highlights: [
+      "Risk Assessment & Analysis – Evaluating financial and insurance risks using statistical methods, mathematical models, and data analysis.",
+      "Claims Analytics – Analysing claims data, identifying trends, and generating insights to support effective claims management.",
+      "Predictive Modelling – Applying statistical techniques to forecast future risks, claim patterns, and potential financial outcomes.",
     ],
   }
 ];
@@ -281,8 +306,8 @@ const teams = [
 
 const TeamSection = () => {
   return (
-    <section id="team" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="team" className="py-fluid-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header with enhanced animation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -291,7 +316,7 @@ const TeamSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
+          <h2 className="text-fluid-4xl font-extrabold text-gray-900 mb-4">
             Our <span className="text-orange-600"> Teams</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -323,7 +348,7 @@ const TeamSection = () => {
                     y: -8,
                     boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
                   }}
-                  className={`flex flex-col md:flex-row items-center gap-8 p-8 rounded-3xl bg-white shadow-xl transition-all duration-500 ${getBorderGradient(index)}`}
+                  className={`flex flex-col md:flex-row items-center gap-6 md:gap-8 p-5 sm:p-8 rounded-3xl bg-white shadow-xl transition-all duration-500 ${getBorderGradient(index)}`}
                 >
                   {/* Animated Icon */}
                   <div className={`w-full md:w-1/3 flex justify-center ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
@@ -341,9 +366,11 @@ const TeamSection = () => {
                     
                       <Image
                         src={team.icon}
-                        alt={team.title}
+                        alt={`${team.title} illustration`}
                         width={200}
                         height={200}
+                        sizes="(max-width: 640px) 160px, 200px"
+                        className="w-40 h-40 sm:w-[200px] sm:h-[200px]"
                         // className={`w-16 h-16 ${getIconColor(index)}`}
                       />
                     </motion.div>
@@ -353,7 +380,7 @@ const TeamSection = () => {
                   <div className={`w-full md:w-2/3 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'} transition-colors duration-500`}>
                     <motion.h3 
                       whileHover={{ color: getTitleHoverColor(index) }}
-                      className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-900"
+                      className="text-2xl sm:text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-900"
                     >
                       {team.title}
                     </motion.h3>

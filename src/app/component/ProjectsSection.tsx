@@ -71,7 +71,7 @@
 //           className="bg-white rounded-2xl shadow-xl overflow-hidden border-b-4 border-orange-500"
 //         >
 //           {/* Logo & About */}
-//           <div className="p-8 text-center">
+//           <div className="p-5 sm:p-8 text-center">
 //             <motion.div
 //               whileHover={{ scale: 1.05 }}
 //               className="inline-block mb-6"
@@ -95,14 +95,14 @@
 //               href={cabrilloContent.website}
 //               target="_blank"
 //               rel="noopener noreferrer"
-//               className="mt-8 inline-block px-6 py-3 bg-orange-600 text-white rounded-full font-medium shadow-md"
+//               className="mt-8 inline-block px-6 py-3.5 bg-orange-600 text-white rounded-full font-medium shadow-md"
 //             >
 //               Visit Website →
 //             </motion.a>
 //           </div>
 
 //           {/* Features Grid - Matched to ServiceSection */}
-//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 p-8 bg-gray-50">
+//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 p-5 sm:p-8 bg-gray-50">
 //             {cabrilloContent.features.map((feature, index) => (
 //               <motion.div
 //                 key={index}
@@ -119,7 +119,7 @@
 //                 <h3 className="text-xl font-semibold text-center text-gray-800 mb-2">
 //                   {feature.title}
 //                 </h3>
-//                 <p className="text-gray-600 text-center text-sm">
+//                 <p className="text-gray-600 text-center text-base md:text-sm">
 //                   {feature.description}
 //                 </p>
 //               </motion.div>
@@ -134,7 +134,7 @@
 //           transition={{ delay: 0.4 }}
 //           className="text-center mt-16"
 //         >
-//           <div className="inline-block bg-orange-50 px-6 py-3 rounded-full border border-orange-200">
+//           <div className="inline-block bg-orange-50 px-6 py-3 rounded-3xl sm:rounded-full border border-orange-200">
 //             <p className="text-gray-700 font-medium">
 //               Delivering specialized insurance solutions with exceptional service
 //             </p>
@@ -235,8 +235,8 @@ Through sophisticated pricing techniques, quality and timely claims handling, ca
 
 const PartnerSection = () => {
   return (
-    <section id="projects" className="py-20 bg-gradient-to-t from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="projects" className="py-fluid-20 bg-gradient-to-t from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header - Matched to TeamSection */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -245,7 +245,7 @@ const PartnerSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-extrabold text-gray-900">
+          <h2 className="text-fluid-4xl font-extrabold text-gray-900">
             Our <span className="text-orange-600">Trusted Partner</span>
           </h2>
           <p className="mt-4 text-lg text-gray-700">
@@ -261,7 +261,7 @@ const PartnerSection = () => {
           className="bg-white rounded-2xl shadow-xl overflow-hidden border-b-4 border-orange-500"
         >
           {/* Logo & About */}
-          <div className="p-8 text-center">
+          <div className="p-5 sm:p-8 text-center">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="inline-block mb-6"
@@ -270,8 +270,8 @@ const PartnerSection = () => {
                 src={cabrilloContent.logo}
                 alt={`${cabrilloContent.name} logo`}
                 width={280}
-                height={120}
-                className="mx-auto"
+                height={109}
+                className="mx-auto h-auto w-[220px] sm:w-[280px]"
               />
             </motion.div>
 
@@ -294,12 +294,12 @@ const PartnerSection = () => {
                     <Image
                       src={partner.image}
                       alt={`Logo of partner ${index + 1}`}
-                      fill 
-                      
-                      className="object-fill h-40"
+                      fill
+                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 20vw"
+                      className="object-contain h-40"
                     />
                   </div>
-                  <p className="text-gray-600 text-xs">
+                  <p className="text-gray-600 text-base md:text-xs">
                     {partner.description}
                   </p>
                 </motion.div>
@@ -311,14 +311,14 @@ const PartnerSection = () => {
               href={cabrilloContent.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-block px-6 py-3 bg-orange-600 text-white rounded-full font-medium shadow-md"
+              className="mt-8 inline-block px-6 py-3.5 bg-orange-600 text-white rounded-full font-medium shadow-md"
             >
               Visit Website →
             </motion.a>
           </div>
 
           {/* Features Grid - Matched to ServiceSection */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 p-8 bg-gray-50">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 p-5 sm:p-8 bg-gray-50">
             {cabrilloContent.features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -335,7 +335,7 @@ const PartnerSection = () => {
                 <h3 className="text-xl font-semibold text-center text-gray-800 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 text-center text-sm">
+                <p className="text-gray-600 text-center text-base md:text-sm">
                   {feature.description}
                 </p>
               </motion.div>
@@ -350,7 +350,7 @@ const PartnerSection = () => {
           transition={{ delay: 0.4 }}
           className="text-center mt-16"
         >
-          <div className="inline-block bg-orange-50 px-6 py-3 rounded-full border border-orange-200">
+          <div className="inline-block bg-orange-50 px-6 py-3 rounded-3xl sm:rounded-full border border-orange-200">
             <p className="text-gray-700 font-medium">
               Delivering specialized insurance solutions with exceptional service
             </p>

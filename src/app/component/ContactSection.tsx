@@ -217,8 +217,8 @@ const ContactUsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-t from-gray-50 to-white" id="contact">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-fluid-20 bg-gradient-to-t from-gray-50 to-white" id="contact">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header - Matched to TestimonialSection */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -227,7 +227,7 @@ const ContactUsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-extrabold text-gray-900">
+          <h2 className="text-fluid-4xl font-extrabold text-gray-900">
             Get In <span className="text-orange-600">Touch</span>
           </h2>
           <p className="mt-4 text-lg text-gray-700">
@@ -243,7 +243,7 @@ const ContactUsSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-orange-500"
+              className="bg-white p-5 sm:p-8 rounded-2xl shadow-xl border-l-4 border-orange-500"
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Contact Information</h3>
               <p className="text-gray-600 mb-6">
@@ -256,7 +256,7 @@ const ContactUsSection = () => {
                     <span className="text-gray-700 font-medium">Email us at:</span>
                     <Link 
                       href="mailto:info@sudhanandgroup.com" 
-                      className="block text-orange-600 hover:text-orange-800 transition"
+                      className="block py-3 text-orange-600 hover:text-orange-800 transition break-all"
                     >
                       info@sudhanandgroup.com
                     </Link>
@@ -281,10 +281,10 @@ const ContactUsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-xl relative overflow-hidden"
+              className="bg-white p-5 sm:p-8 rounded-2xl shadow-xl relative overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-yellow-400"></div>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" aria-describedby="contact-status">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-gray-800 font-medium mb-2">
@@ -294,10 +294,11 @@ const ContactUsSection = () => {
                       id="name"
                       name="name"
                       type="text"
+                      autoComplete="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="p-3 text-zinc-900 w-full bg-white border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition"
+                      className="p-3 min-h-[44px] text-base text-zinc-900 w-full bg-white border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition"
                       placeholder="John Doe"
                     />
                   </div>
@@ -309,10 +310,12 @@ const ContactUsSection = () => {
                       id="email"
                       name="email"
                       type="email"
+                      autoComplete="email"
+                      inputMode="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="p-3 text-zinc-900 w-full bg-white border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition"
+                      className="p-3 min-h-[44px] text-base text-zinc-900 w-full bg-white border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition"
                       placeholder="john.doe@example.com"
                     />
                   </div>
@@ -327,7 +330,7 @@ const ContactUsSection = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="p-3 text-zinc-900 w-full bg-white border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition"
+                    className="p-3 min-h-[44px] text-base text-zinc-900 w-full bg-white border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 transition"
                     rows={5}
                     placeholder="Type your message here"
                   />
@@ -336,13 +339,14 @@ const ContactUsSection = () => {
                   <button
                     type="submit"
                     disabled={loading || !formData.name || !formData.email || !formData.message}
-                    className={`w-full rounded-lg px-4 py-3 font-semibold text-white shadow-md ${
+                    className={`w-full min-h-[44px] rounded-lg px-4 py-3 font-semibold text-white shadow-md ${
                       loading ? 'bg-orange-400 cursor-not-allowed' : 'bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600'
                     } transition duration-300`}
                   >
                     {loading ? 'Sending...' : 'Send Message'}
                   </button>
                 </div>
+                <div id="contact-status" role="status" aria-live="polite">
                 {responseMessage && (
                   <p className={`text-center mt-4 ${
                     responseMessage.includes('success') ? 'text-green-600' : 'text-red-600'
@@ -350,6 +354,7 @@ const ContactUsSection = () => {
                     {responseMessage}
                   </p>
                 )}
+                </div>
               </form>
             </motion.div>
           </div>

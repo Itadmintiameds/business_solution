@@ -19,6 +19,7 @@ const LandingPage = () => {
   return (
     <div className="font-sans">
       <NavBar />
+      <main>
       <HeroSection />
       <HistoryTimeline />
       <AboutSection />
@@ -36,6 +37,7 @@ const LandingPage = () => {
       <ProjectsSection />
       {/* <TestimonialSection /> */}
       <ContactSection />
+      </main>
       <FooterSection />
     </div>
   );
