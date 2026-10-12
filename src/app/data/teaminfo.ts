@@ -270,7 +270,7 @@ export const teams: Team[] = [
         // The PDF asks to replace Bharti's image and details with the updated team member information and to
         // update the TL content and designation, but it names no new lead and has no photo. Bharti's card stays
         // until that is supplied: then set `image`, `leadership` (leaderName, designation, experience) here and
-        // the "Led by ..." line for team-009 in component/TeamSection.tsx.
+        // the "Led by ..." line for team-009 in data/teamcards.json.
         image: "/teamlead/WhatsApp Image 2025-04-25 at 11.45.52 (1).jpeg",
         groupphoto: "ppa.jpeg",
         description:
