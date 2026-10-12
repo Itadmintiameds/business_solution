@@ -6,14 +6,11 @@ export interface Leader {
     description: string;
 }
 
-// TODO: Arun Sir photo/bio. The PDF asks for his picture and a short detail section but gives neither.
-// Replace imageUrl (placeholder avatar) and role, add a description (the bio panel is hidden while it is empty),
-// and confirm the display name, once supplied.
-export const arunSir: Leader = {
-    name: 'Arun Sir',
-    role: 'Sudhanand Business Solutions',
-    imageUrl: '/default-image.jpg',
-    description: '',
+export const arunKumar: Leader = {
+    name: 'Arun Kumar',
+    role: 'Facility & Project Manager\nSudhanand Business Solutions',
+    imageUrl: '/teamlead/arun-kumar.jpeg',
+    description: 'Arun Kumar is an experienced Facility and Project Manager committed to delivering high-quality projects on time and within budget. He plays a key role in ensuring smooth operations and successful project execution at Sudhanand Business Solutions.',
 };
 
 export const leadershipTeam: Leader[] = [
@@ -53,5 +50,5 @@ export const leadershipTeam: Leader[] = [
         imageUrl: '/SBS/abdul.jpeg',
         description: 'Syed Abdul Wahab is a skilled facility and project manager with a focus on delivering high-quality projects on time and within budget. He is dedicated to ensuring the success of Sudhanand Business Solutions\' projects and operations.',
     },
-    arunSir,
+    arunKumar,
 ];
