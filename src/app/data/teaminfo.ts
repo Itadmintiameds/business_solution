@@ -299,8 +299,7 @@ export const teams: Team[] = [
     {
         id: "team-010",
         name: "COBOL Development",
-        // TODO: Madhu photo. The PDF has none, so the placeholder avatar is shown.
-        image: "/default-image.jpg",
+        image: "/teamlead/madhu-portrait.jpeg",
         // TODO: COBOL team group photo. A company-wide photo stands in for now.
         groupphoto: "sbpl.JPG",
         description:
