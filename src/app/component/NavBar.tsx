@@ -1,8 +1,9 @@
 'use client'
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useMobileDrawer } from "./useMobileDrawer";
 
 const navLinks = [
   { id: "about", label: "About" },
@@ -14,10 +15,8 @@ const navLinks = [
 ];
 
 const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, setIsOpen, menuRef, toggleRef } = useMobileDrawer();
   const [activeSection, setActiveSection] = useState("");
-  const menuRef = useRef<HTMLDivElement | null>(null);
-  const toggleRef = useRef<HTMLButtonElement | null>(null);
 
   // Highlight the nav link of the section currently in view
   useEffect(() => {
@@ -41,53 +40,10 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Mobile drawer: outside tap / Esc close it, focus moves into it and back to the toggle, Tab stays inside
+  // Lock page scroll while the mobile drawer is open
   useEffect(() => {
-    if (!isOpen) {
-      document.body.style.overflow = "auto";
-      return;
-    }
-
-    const close = (returnFocus: boolean) => {
-      setIsOpen(false);
-      if (returnFocus) toggleRef.current?.focus();
-    };
-    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
-      const target = event.target as Node;
-      if (menuRef.current?.contains(target) || toggleRef.current?.contains(target)) return;
-      close(false);
-    };
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        close(true);
-        return;
-      }
-      if (event.key !== "Tab" || !menuRef.current || !toggleRef.current) return;
-      const focusables = [toggleRef.current, ...Array.from(menuRef.current.querySelectorAll<HTMLElement>("a"))];
-      const index = focusables.indexOf(document.activeElement as HTMLElement);
-      const next = event.shiftKey
-        ? (index <= 0 ? focusables.length - 1 : index - 1)
-        : (index === focusables.length - 1 ? 0 : index + 1);
-      event.preventDefault();
-      focusables[next].focus();
-    };
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) setIsOpen(false);
-    };
-
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("touchstart", handlePointerDown);
-    document.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("resize", handleResize);
-    document.body.style.overflow = "hidden";
-    const focusTimer = window.setTimeout(() => menuRef.current?.querySelector<HTMLElement>("a")?.focus(), 60); // after the drawer becomes visible
-
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("touchstart", handlePointerDown);
-      document.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("resize", handleResize);
-      window.clearTimeout(focusTimer);
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);

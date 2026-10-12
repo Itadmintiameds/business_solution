@@ -186,121 +186,89 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
+const team = (id: string, icon: string, title: string, description: string, ...highlights: string[]) => ({
+  id,
+  icon,
+  title,
+  description,
+  highlights,
+});
+
 const teams = [
-  {
-    id: 'team-001',
-    icon: "/icons/1.png",
-    title: "Policy Processing",
-    description: "Ensuring seamless policy handling with precision, speed, and compliance.",
-    highlights: [
-      "Led by Ms. Ashwini A., 10+ years experience",
-      "50+ professionals ensuring streamlined execution",
-      "End-to-End Processing – from underwriting to claims",
-    ],
-  },
-  {
-    id: 'team-002',
-    icon: "/icons/2.png",
-    title: "Pre-Claims",
-    description: "Efficient, compliant, and client-focused claims support — always.",
-    highlights: [
-      "Led by Ms. Chandana, Team Lead with 2+ years of leadership experience",
-      "15+ professionals handling all kinds of claims tasks.",
-      "Expertise in fraud prevention and regulatory adherence",
-    ],
-  },
-  {
-    id: 'team-004',
-    icon: '/icons/3.png',
-    title: "Software Testing",
-    description: "Ensuring software excellence through rigorous testing, automation, and continuous improvement.",
-    highlights: [
-      "Led by Rajesh Kumbara, Team Lead (TL) with 12+ years of experience",
-      "15+ experts in manual & automated testing",
-      "Specialized in Selenium, API testing, and performance analysis",
-    ],
-  },
-  {
-    id: 'team-005',
-    icon: '/icons/4.png',
-    title: "Data Engineering",
-    description: "Transforming raw data into valuable insights with smart integration and automation.",
-    highlights: [
-      "Led by Panduranga B P (Associate Manager) and Divya Anand",
-      "Managing ETL, data pipelines, and cloud data storage",
-      "Expertise in Power BI, AWS, and insurance data management",
-    ],
-  },
-  {
-    id: 'team-006',
-    icon: '/icons/5.png',
-    title: "Data Analysis",
-    description: "Driving insurance analytics and automation through advanced data tools and insights.",
-    highlights: [
-      "Led by Panduranga B P (Associate Manager) and Divya Anand",
-      "Team of 4+ Highly skilled team of data analysts.",
-      "Expertise in Pandas, NumPy, SQL, and ASTEC",
-      "Specialization in raters, data transformation, and report generation",
-    ],
-  },
-  {
-    id: 'team-007',
-    icon: '/icons/6.png',
-    title: "Accounts",
-    description: "Specializing in all financial operations in compliance with US GAAP and regulations.",
-    highlights: [
-      "Led by Mr. Akshay Othayoth - 5+ years experience",
-      "10+ professionals handling client finance",
-      "Expertise in invoicing, bookkeeping, AR/AP, and reconciliation",
-    ],
-  },
-  {
-    id: 'team-008',
-    icon: '/icons/7.png',
-    title: "Bookrolls",
-    description: "Delivering personalized insurance solutions through expert risk assessment, transparent communication, and client-focused coverage.",
-    highlights: [
-      "Led by Ms. Chandana, experienced team lead with 5+ years of expertise",
-      "6+ dedicated professionals working collaboratively on client-specific insurance needs",
-      "Specialized in coverage recommendations, risk evaluation, and precise policy application drafting",
-    ],
-  },
-  {
-    id: 'team-009',
-    icon: '/icons/8.png',
-    title: "CAT Modeling",
-    description: "Delivering advanced catastrophe risk solutions through simulation-based modeling, strategic risk planning, and proactive disaster readiness.",
-    highlights: [
-      // TODO: CAT Modeling new TL name/photo/bio (replace this line once the new lead is confirmed; see data/teaminfo.ts team-009)
-      "Led by Bharti Kaushik, CAT modeling specialist with 3+ years of experience",
-      "Expert in high-impact peril modeling including hurricanes, floods, and large-scale natural disasters",
-      "Skilled in portfolio analysis, reinsurance strategy, and scenario-based stress testing",
-    ],
-  },
-  {
-    id: 'team-010',
-    // TODO: COBOL card illustration. Reuses an existing generic illustration until a dedicated one exists.
-    icon: '/icons/7.png',
-    title: "COBOL & Legacy Systems",
-    description: "Delivering reliable enterprise solutions through COBOL development, AS400/IBM iSeries expertise, and legacy application management.",
-    highlights: [
-      "Led by Madhu, with expertise in COBOL-based legacy application systems",
-      "Specialized in AS400/IBM iSeries platforms and business-critical legacy software",
-      "Experienced in application maintenance, enhancements, troubleshooting, and system support",
-    ],
-  },
-  {
-    id: 'team-011',
-    // TODO: Actuarial Sciences card illustration. Reuses an existing generic illustration until a dedicated one exists.
-    icon: '/icons/6.png',
-    title: "Actuarial Sciences",
-    description: "At Sudhanand Business Solutions, our Actuarial Sciences team focuses on risk assessment, data analysis, and predictive modelling to support informed decision-making in the insurance sector.",
-    highlights: [
-      "Risk Assessment & Analysis – Evaluating financial and insurance risks using statistical methods, mathematical models, and data analysis.",
-      "Claims Analytics – Analysing claims data, identifying trends, and generating insights to support effective claims management.",
-      "Predictive Modelling – Applying statistical techniques to forecast future risks, claim patterns, and potential financial outcomes.",
-    ],
-  }
+  team(
+    "team-001", "/icons/1.png", "Policy Processing",
+    "Ensuring seamless policy handling with precision, speed, and compliance.",
+    "Led by Ms. Ashwini A., 10+ years experience",
+    "50+ professionals ensuring streamlined execution",
+    "End-to-End Processing – from underwriting to claims",
+  ),
+  team(
+    "team-002", "/icons/2.png", "Pre-Claims",
+    "Efficient, compliant, and client-focused claims support — always.",
+    "Led by Ms. Chandana, Team Lead with 2+ years of leadership experience",
+    "15+ professionals handling all kinds of claims tasks.",
+    "Expertise in fraud prevention and regulatory adherence",
+  ),
+  team(
+    "team-004", "/icons/3.png", "Software Testing",
+    "Ensuring software excellence through rigorous testing, automation, and continuous improvement.",
+    "Led by Rajesh Kumbara, Team Lead (TL) with 12+ years of experience",
+    "15+ experts in manual & automated testing",
+    "Specialized in Selenium, API testing, and performance analysis",
+  ),
+  team(
+    "team-005", "/icons/4.png", "Data Engineering",
+    "Transforming raw data into valuable insights with smart integration and automation.",
+    "Led by Panduranga B P (Associate Manager) and Divya Anand",
+    "Managing ETL, data pipelines, and cloud data storage",
+    "Expertise in Power BI, AWS, and insurance data management",
+  ),
+  team(
+    "team-006", "/icons/5.png", "Data Analysis",
+    "Driving insurance analytics and automation through advanced data tools and insights.",
+    "Led by Panduranga B P (Associate Manager) and Divya Anand",
+    "Team of 4+ Highly skilled team of data analysts.",
+    "Expertise in Pandas, NumPy, SQL, and ASTEC",
+    "Specialization in raters, data transformation, and report generation",
+  ),
+  team(
+    "team-007", "/icons/6.png", "Accounts",
+    "Specializing in all financial operations in compliance with US GAAP and regulations.",
+    "Led by Mr. Akshay Othayoth - 5+ years experience",
+    "10+ professionals handling client finance",
+    "Expertise in invoicing, bookkeeping, AR/AP, and reconciliation",
+  ),
+  team(
+    "team-008", "/icons/7.png", "Bookrolls",
+    "Delivering personalized insurance solutions through expert risk assessment, transparent communication, and client-focused coverage.",
+    "Led by Ms. Chandana, experienced team lead with 5+ years of expertise",
+    "6+ dedicated professionals working collaboratively on client-specific insurance needs",
+    "Specialized in coverage recommendations, risk evaluation, and precise policy application drafting",
+  ),
+  team(
+    "team-009", "/icons/8.png", "CAT Modeling",
+    "Delivering advanced catastrophe risk solutions through simulation-based modeling, strategic risk planning, and proactive disaster readiness.",
+    // TODO: CAT Modeling new TL name/photo/bio (replace this line once the new lead is confirmed; see data/teaminfo.ts team-009)
+    "Led by Bharti Kaushik, CAT modeling specialist with 3+ years of experience",
+    "Expert in high-impact peril modeling including hurricanes, floods, and large-scale natural disasters",
+    "Skilled in portfolio analysis, reinsurance strategy, and scenario-based stress testing",
+  ),
+  // TODO: COBOL card illustration. Reuses an existing generic illustration until a dedicated one exists.
+  team(
+    "team-010", "/icons/7.png", "COBOL & Legacy Systems",
+    "Delivering reliable enterprise solutions through COBOL development, AS400/IBM iSeries expertise, and legacy application management.",
+    "Led by Madhu, with expertise in COBOL-based legacy application systems",
+    "Specialized in AS400/IBM iSeries platforms and business-critical legacy software",
+    "Experienced in application maintenance, enhancements, troubleshooting, and system support",
+  ),
+  // TODO: Actuarial Sciences card illustration. Reuses an existing generic illustration until a dedicated one exists.
+  team(
+    "team-011", "/icons/6.png", "Actuarial Sciences",
+    "At Sudhanand Business Solutions, our Actuarial Sciences team focuses on risk assessment, data analysis, and predictive modelling to support informed decision-making in the insurance sector.",
+    "Risk Assessment & Analysis – Evaluating financial and insurance risks using statistical methods, mathematical models, and data analysis.",
+    "Claims Analytics – Analysing claims data, identifying trends, and generating insights to support effective claims management.",
+    "Predictive Modelling – Applying statistical techniques to forecast future risks, claim patterns, and potential financial outcomes.",
+  ),
 ];
 
 
